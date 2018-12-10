@@ -49,13 +49,12 @@ int main()
             addr[i] = (uint8_t)i;
         }
 
+        printf("virtual  : physical\n");
         for (int i=0; i<pages*2; i++) {
             printf("%p : 0x%012lx\n", (void*)&addr[ps/2*i], hoge::v2p((void*)&addr[ps/2*i]));
         }
 
         _svm_allocator.deallocate(addr, ps*pages);
-
-        sleep(1000);
 
     } catch (cl::Error const& ex) {
 
